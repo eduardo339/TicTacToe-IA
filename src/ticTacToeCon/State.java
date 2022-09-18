@@ -1,9 +1,5 @@
 package ticTacToeCon;
 
-
 public enum State {
-	PLAYING, 
-	DRAW, 
-	CROSS_WON, 
-	NOUGHT_WON
+	PLAYING, DRAW, CP1_WON, PLAYER_WON
 }
