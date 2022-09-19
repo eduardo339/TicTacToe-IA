@@ -160,10 +160,6 @@ public class GameMain {
 	public void Posswin() {
 		System.out.println("Maquina pensando.......");
 		System.out.println("Maquina tira: ");
-		//2-0 - 2-2
-		//0-0 - 0-2
-		//0-0 - 2-0
-		//0-2 - 2-2
 		
 		if(cellsWin[0][2] * cellsWin[2][2] == 16 && board.cells[1][2].content == Seed.NO_SEED) {
 			currentState = board.stepGame(currentPlayer, 1, 2);
@@ -172,7 +168,15 @@ public class GameMain {
 		else if(cellsWin[2][2] * cellsWin[2][0] == 16 && board.cells[2][1].content == Seed.NO_SEED) {
 			currentState = board.stepGame(currentPlayer, 2, 1);
 			cellsWin[2][1] = 4;
+		}//
+		else if(cellsWin[2][1] * cellsWin[1][1] == 16 && board.cells[0][1].content == Seed.NO_SEED) {
+			currentState = board.stepGame(currentPlayer, 0, 1);
+			cellsWin[0][1] = 4;
 		}
+		else if(cellsWin[1][1] * cellsWin[1][2] == 16 && board.cells[1][0].content == Seed.NO_SEED) {
+			currentState = board.stepGame(currentPlayer, 1, 0);
+			cellsWin[1][0] = 4;
+		}//
 		else if(cellsWin[0][0] * cellsWin[0][2] == 16 && board.cells[0][1].content == Seed.NO_SEED) {
 			currentState = board.stepGame(currentPlayer, 0, 1);
 			cellsWin[0][1] = 4;
