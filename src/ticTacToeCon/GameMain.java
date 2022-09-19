@@ -26,7 +26,7 @@ public class GameMain {
 
 	/** Constructor de la clase */
 	public GameMain() {
-		// Prepara la inicialización del juego una vez.
+		// Prepara la inicializaciï¿½n del juego una vez.
 		initGame();
 
 		// Resetea el tablero del juego, el estado actual y el jugador actual.
@@ -41,7 +41,7 @@ public class GameMain {
 			// Se redibuja el tablero.
 			board.paint();
 
-			// Imprime el mensaje si el juego terminó.
+			// Imprime el mensaje si el juego terminï¿½.
 			if (currentState == State.CP1_WON) {
 				System.out.println("Las 'X' ganan\nAdios.");
 			} else if (currentState == State.PLAYER_WON) {
@@ -54,7 +54,7 @@ public class GameMain {
 		} while (currentState == State.PLAYING); // Repite hasta el final del juego
 	}
 
-	/** Metodo que prepara la inicialización del juego una sola vez. */
+	/** Metodo que prepara la inicializaciï¿½n del juego una sola vez. */
 	public void initGame() {
 		for (int i = 0; i < cellsWin.length; i++) {
 			for (int j = 0; j < cellsWin.length; j++) {
@@ -99,7 +99,7 @@ public class GameMain {
 
 				} else {
 					System.out.println(
-							"La celda [" + (row + 1) + "," + (col + 1) + "] no es válida. Intenta otra vez...");
+							"La celda [" + (row + 1) + "," + (col + 1) + "] no es vï¿½lida. Intenta otra vez...");
 				}
 			} while (!validInput); // Repite mientras la vandera sea verdadera.
 			
@@ -148,7 +148,14 @@ public class GameMain {
 			break;
 			
 		case 9:
-			Posswin();
+			for (int i = 0; i < cellsWin.length; i++) {
+				for (int j = 0; j < cellsWin.length; j++) {
+					if(board.cells[i][j].content == Seed.NO_SEED){
+						currentState = board.stepGame(currentPlayer, i, j);
+						cellsWin[i][j] = 4;
+					}
+				}
+			}
 			turn++;
 			Zzz();
 			break;
